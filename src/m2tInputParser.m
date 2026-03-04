@@ -178,6 +178,9 @@ function p = parse (p, varargin)
                     'Ignoring unknown argument "%s"', varargin{n});
           end
           p.Unmatched.(varargin{n}) = varargin{n+1};
+        elseif isstring(varargin{n})
+          error (sprintf ('%s:invalidchar', mfilename), ...
+                 '%s: expected input to be be char, got string. ', mfilename)
         else
           error (sprintf ('%s:invalidinput', mfilename), ...
                  '%s: invalid input', mfilename)
